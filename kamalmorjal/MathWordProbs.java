@@ -13,8 +13,24 @@ public class MathWordProbs {
     
     public static void main(String[] args) {
         // ...
-        String name = getRandomElement(names);
-        System.out.println(name);
+        String q = "%s has %d %s and %s has %d %s. How many %s do they have together?\n\nYour answer: ";
+        String name1 = getRandomElement(names);
+        String name2 = getRandomElement(names);
+        String fruit = getRandomElement(fruits);
+
+        int count1 = getRandomNum();
+        int count2 = getRandomNum();
+
+        System.out.printf(q, name1, count1, pluralize(count1, fruit), name2, count2, pluralize(count2, fruit), pluralize(2, fruit));
+
+        Scanner in = new Scanner(System.in);
+        int answer = in.nextInt();
+
+        if(answer == (count1 + count2)) {
+            System.out.println("BINGO!");
+        } else {
+            System.out.println("Sorry, that's incorrect.");
+        }
     }
 
     private static String pluralize(int count, String nama) {
@@ -24,7 +40,7 @@ public class MathWordProbs {
         } else if(count == 1) {
             return nama;
         } else {
-            return nama; // FIXME: manage the case of negative fruit numbers better
+            return nama; // this shouldn't happen, but if it does, ignore for now
         }
     }
 
@@ -34,6 +50,6 @@ public class MathWordProbs {
 
     private static int getRandomNum() {
         Random r = new Random();
-        return r.nextInt(MAX_NAMES);
+        return r.nextInt(MAX_NAMES-1) + 1; // add 1 to make sure there are no 0 fruits for now
     }
 }
