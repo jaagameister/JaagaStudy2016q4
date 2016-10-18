@@ -44,6 +44,8 @@ public class Mathw {
                 
                     if (d==c) {
                         flag = true;
+                        System.out.printf("%s\n",posresp[posresprand]);
+
                     }
                 }
             }
