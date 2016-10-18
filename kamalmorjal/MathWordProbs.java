@@ -13,29 +13,41 @@ public class MathWordProbs {
     
     public static void main(String[] args) {
         // ...
+
         String q = "%s has %d %s and %s has %d %s. How many %s do they have together?\n\nYour answer: ";
-        String name1 = getRandomElement(names);
-        String name2 = getRandomElement(names);
-        String fruit = getRandomElement(fruits);
+        String esc = "(Press Ctrl+C to exit)";
+        String name1, name2, fruit;
+        int count1, count2;
 
-        int count1 = getRandomNum();
-        int count2 = getRandomNum();
+        while(true) {
+            name1 = getRandomElement(names);
+            name2 = getRandomElement(names);
+            fruit = getRandomElement(fruits);
 
-        System.out.printf(q, name1, count1, pluralize(count1, fruit), name2, count2, pluralize(count2, fruit), pluralize(2, fruit));
+            count1 = getRandomNum() + 1;
+            count2 = getRandomNum() + 1;
 
-        Scanner in = new Scanner(System.in);
-        int answer = in.nextInt();
+            System.out.printf(q, name1, count1, pluralize(count1, fruit), 
+                        name2, count2, pluralize(count2, fruit), 
+                        pluralize(2, fruit));
 
-        if(answer == (count1 + count2)) {
-            System.out.println("BINGO!");
-        } else {
-            System.out.println("Sorry, that's incorrect.");
+            Scanner in = new Scanner(System.in);
+            int answer = in.nextInt();
+
+            while(answer != (count1 + count2)) {
+                System.out.println("Sorry, that's incorrect. Please try again.");
+                System.out.println(esc);
+                System.out.print("\nYour answer: ");
+                answer = in.nextInt();
+            }
+
+            System.out.println("BINGO! Let's try one more... \n\n -------------------- \n\n");
         }
     }
 
     private static String pluralize(int count, String nama) {
         // return pluralized form of word based on input number
-        if(count > 1) {
+        if(count > 1 || count == 0) {
             return nama + "s";
         } else if(count == 1) {
             return nama;
@@ -45,11 +57,11 @@ public class MathWordProbs {
     }
 
     private static String getRandomElement(String [] e) {
-        return e[getRandomNum()];
+        return e[(getRandomNum())];
     }
 
     private static int getRandomNum() {
         Random r = new Random();
-        return r.nextInt(MAX_NAMES-1) + 1; // add 1 to make sure there are no 0 fruits for now
+        return r.nextInt(MAX_NAMES);
     }
 }
