@@ -34,7 +34,7 @@ public class MathProb {
     public static void play(int count){
         String problem;
         int ans;
-        probset = new ProbSet(count*10, (count*10)+10);
+        probset = new ProbSet(count*10, (count*20)+10);
         Iterator addIterator = probset.addProbSet.keySet().iterator();
         while(addIterator.hasNext()) {
             problem=(String)addIterator.next();
