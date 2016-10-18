@@ -3,15 +3,18 @@ import java.util.*;
 public class MathWordProbs {
     private static int MAX_NAMES = 10;
     private static String[] names = 
-        { "Ryan", "Mita", "Julie", "Ram", "Madhab", "Inder", "Visha", "Roshan", "Kamal", "QJ" };
-    private static String[] fruits = { "banana", "apple", "orange", "avacado", "" }
+        { "Ryan", "Mita", "Julie", "Ram", "Madhab",
+        "Inder", "Visha", "Roshan", "Kamal", "QJ" };
+    private static String[] fruits = 
+        { "banana", "apple", "orange", "avacado",
+        "lemon", "mango", "pineapple", "strawberry", 
+        "jackfruit", "kiwi" };
 
     
     public static void main(String[] args) {
         // ...
-        for(int i = 0; i < 10; i++) {
-            System.out.println(getRandomNumInRange(5, 10));
-        }
+        String name = getRandomElement(names);
+        System.out.println(name);
     }
 
     private static String pluralize(int count, String nama) {
@@ -25,14 +28,11 @@ public class MathWordProbs {
         }
     }
 
-    private static String getRandomName() {
-        return names[getRandomNum()];
+    private static String getRandomElement(String [] e) {
+        return e[getRandomNum()];
     }
 
     private static int getRandomNum() {
-        // if(min >= max) {
-        //    throw new IllegalArgumentException("max must be larger than min");
-        // }
         Random r = new Random();
         return r.nextInt(MAX_NAMES);
     }
