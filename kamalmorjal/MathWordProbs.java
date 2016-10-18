@@ -1,3 +1,7 @@
+/*
+ * A dumb chatbot that gives simple math addition problems
+ * Authors: Roshan and Kamal
+ * */
 import java.util.*;
 
 public class MathWordProbs {
