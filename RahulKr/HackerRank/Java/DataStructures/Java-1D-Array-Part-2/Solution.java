@@ -10,11 +10,11 @@ public class Solution {
         for(int i=0; i<t; i++){
             int n = sc.nextInt();
             int m = sc.nextInt();
-            int[] arr = new int[n];
+            int[] arrIn = new int[n];
             for(int j=0; j<n; j++){
-                arr[j] = sc.nextInt();
+                arrIn[j] = sc.nextInt();
             }
-            if(check(0, m, arr)){
+            if(check(0, m, arrIn)){
                 System.out.println("YES");
             }
             else System.out.println("NO");
